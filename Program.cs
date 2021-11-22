@@ -33,10 +33,14 @@ namespace CurrentWeather
         {
             Console.WriteLine("Current_Weather!");
 
-            // API key 5c0d5e4b857084e5350f04481249b55c
 
             var zipCodeString = "";
             var zipCodeInt = 0;
+
+            Console.Write("Please enter your API Key: ");
+
+            var api_Key = Console.ReadLine();
+
 
             do
             {
@@ -59,7 +63,7 @@ namespace CurrentWeather
             Console.WriteLine($"Please be patient while I retrieve the weather for zip code {zipCodeInt}");
 
             var weatherClient = new HttpClient();
-            var weatherURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zipCodeInt + "&appid=5c0d5e4b857084e5350f04481249b55c&units=imperial";
+            var weatherURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zipCodeInt + "&appid=" + api_Key + "&units=imperial";
             var weatherResponse = weatherClient.GetStringAsync(weatherURL).Result;
 
             var weatherReport = new APIReturn();
